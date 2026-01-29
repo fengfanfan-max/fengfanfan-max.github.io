@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>冯凡帆 | 前端开发工程师</title>
+    <title data-i18n="page.title">冯凡帆 | 前端开发工程师</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -40,6 +40,41 @@
             line-height: 1.7;
             overflow-x: hidden;
             cursor: none;
+        }
+
+        /* Language Switcher */
+        .lang-switch {
+            position: fixed;
+            top: 20px;
+            right: 24px;
+            z-index: 1001;
+            display: flex;
+            gap: 4px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 4px;
+        }
+
+        .lang-switch button {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 6px 12px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            cursor: none;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .lang-switch button.active {
+            background: var(--accent);
+            color: #000;
+        }
+
+        .lang-switch button:hover:not(.active) {
+            color: var(--text-primary);
         }
 
         /* Hide default cursor on interactive elements */
@@ -252,6 +287,7 @@
         .hero-cta {
             display: flex;
             gap: 16px;
+            flex-wrap: wrap;
         }
 
         .btn {
@@ -930,6 +966,11 @@
                 display: none;
             }
 
+            .lang-switch {
+                top: 70px;
+                right: 16px;
+            }
+
             .cursor, .cursor-follower {
                 display: none;
             }
@@ -989,16 +1030,22 @@
     <div class="noise"></div>
     <div class="grid-bg"></div>
 
+    <!-- Language Switcher -->
+    <div class="lang-switch">
+        <button data-lang="zh" class="active" data-i18n="lang.zh">中文</button>
+        <button data-lang="en" data-i18n="lang.en">EN</button>
+    </div>
+
     <!-- Navigation -->
     <nav class="nav">
         <div class="nav-inner">
             <a href="#" class="nav-logo">Feng<span>,</span>Fanfan</a>
             <ul class="nav-links">
-                <li><a href="#experience">经历</a></li>
-                <li><a href="#projects">项目</a></li>
-                <li><a href="#skills">技能</a></li>
-                <li><a href="#education">教育</a></li>
-                <li><a href="#contact">联系</a></li>
+                <li><a href="#experience" data-i18n="nav.experience">经历</a></li>
+                <li><a href="#projects" data-i18n="nav.projects">项目</a></li>
+                <li><a href="#skills" data-i18n="nav.skills">技能</a></li>
+                <li><a href="#education" data-i18n="nav.education">教育</a></li>
+                <li><a href="#contact" data-i18n="nav.contact">联系</a></li>
             </ul>
         </div>
     </nav>
@@ -1008,28 +1055,28 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <p class="hero-greeting">你好，我是</p>
-                    <h1 class="hero-name">冯凡帆</h1>
-                    <p class="hero-title">前端开发工程师</p>
+                    <p class="hero-greeting" data-i18n="hero.greeting">你好，我是</p>
+                    <h1 class="hero-name" data-i18n="name">冯凡帆</h1>
+                    <p class="hero-title" data-i18n="hero.title">前端开发工程师</p>
                     <div class="hero-info">
                         <div class="hero-info-item">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
                             </svg>
-                            深圳
+                            <span data-i18n="hero.location">深圳</span>
                         </div>
                         <div class="hero-info-item">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                             </svg>
-                            3年工作经验
+                            <span data-i18n="hero.experience">3年工作经验</span>
                         </div>
                         <div class="hero-info-item">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                             </svg>
-                            期望薪资 23-26K
+                            <span data-i18n="hero.salary">期望薪资 23-26K</span>
                         </div>
                     </div>
                     <div class="hero-cta">
@@ -1037,21 +1084,21 @@
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                             </svg>
-                            下载简历
+                            <span data-i18n="hero.download">下载简历</span>
                         </a>
                         <a href="#contact" class="btn btn-secondary">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                             </svg>
-                            联系我
+                            <span data-i18n="hero.contact">联系我</span>
                         </a>
-                        <a href="#experience" class="btn btn-secondary">了解更多</a>
+                        <a href="#experience" class="btn btn-secondary" data-i18n="hero.learnMore">了解更多</a>
                     </div>
                 </div>
                 <div class="hero-visual">
                     <div class="hero-visual-stack">
                         <div class="hero-avatar">
-                            <img src="https://youke.xn--y7xa690gmna.cn/s1/2026/01/29/697adca7958a1.webp" alt="冯凡帆">
+                            <img src="https://youke.xn--y7xa690gmna.cn/s1/2026/01/29/697adca7958a1.webp" alt="Feng, Fanfan">
                         </div>
                         <div class="hero-card">
                             <div class="code-block">
@@ -1061,7 +1108,7 @@
                                 </div>
                                 <div class="code-line">
                                     <span class="code-num">2</span>
-                                    <span class="code-content">  name: <span class="code-string">'冯凡帆'</span>,</span>
+                                    <span class="code-content">  name: <span class="code-string">'Feng, Fanfan'</span>,</span>
                                 </div>
                                 <div class="code-line">
                                     <span class="code-num">3</span>
@@ -1091,37 +1138,37 @@
     <section id="experience">
         <div class="container">
             <div class="section-header reveal">
-                <p class="section-label">My Journey</p>
-                <h2 class="section-title">工作经历</h2>
+                <p class="section-label" data-i18n="experience.label">My Journey</p>
+                <h2 class="section-title" data-i18n="experience.title">工作经历</h2>
             </div>
             <div class="experience-list">
                 <div class="experience-item reveal">
                     <div class="experience-header">
                         <div>
-                            <h3 class="experience-company">深圳依时货拉拉科技有限公司</h3>
-                            <p class="experience-position">高级前端研发工程师</p>
+                            <h3 class="experience-company" data-i18n="company.lalamove">深圳依时货拉拉科技有限公司</h3>
+                            <p class="experience-position" data-i18n="experience.lalamove.position">高级前端研发工程师</p>
                         </div>
                         <span class="experience-period">2024.08 - 2025.08</span>
                     </div>
                     <div class="experience-content">
-                        <h4>工作内容</h4>
+                        <h4 data-i18n="experience.responsibilities">工作内容</h4>
                         <ul>
-                            <li>负责货拉拉财务管理系统、仓储管理系统、供应链管理系统等核心业务系统的前端架构设计与迭代开发</li>
-                            <li>主导PC与移动端组件库的技术演进，构建CFC-Mobile移动端组件库，开发30+表单控件与5+业务Hook</li>
-                            <li>负责关键技术方案评审、日常代码审查与线上问题应急修复，保障系统稳定性</li>
+                            <li data-i18n="experience.lalamove.desc1">负责货拉拉财务管理系统、仓储管理系统、供应链管理系统等核心业务系统的前端架构设计与迭代开发</li>
+                            <li data-i18n="experience.lalamove.desc2">主导PC与移动端组件库的技术演进，构建CFC-Mobile移动端组件库，开发30+表单控件与5+业务Hook</li>
+                            <li data-i18n="experience.lalamove.desc3">负责关键技术方案评审、日常代码审查与线上问题应急修复，保障系统稳定性</li>
                         </ul>
                         <div class="achievements">
                             <div class="achievement-card">
-                                <p>通过财务系统重构，新增银行承兑汇票等付款方式，实现批量审批流程与账目自动核销</p>
-                                <strong>业务差错率降至近零，对账效率提升50%</strong>
+                                <p data-i18n="experience.lalamove.ach1.desc">通过财务系统重构，新增银行承兑汇票等付款方式，实现批量审批流程与账目自动核销</p>
+                                <strong data-i18n="experience.lalamove.ach1.result">业务差错率降至近零，对账效率提升50%</strong>
                             </div>
                             <div class="achievement-card">
-                                <p>搭建保证金管理模块，实现全流程自动化管理</p>
-                                <strong>稳定管理保证金台账1000+、供应商700+</strong>
+                                <p data-i18n="experience.lalamove.ach2.desc">搭建保证金管理模块，实现全流程自动化管理</p>
+                                <strong data-i18n="experience.lalamove.ach2.result">稳定管理保证金台账1000+、供应商700+</strong>
                             </div>
                             <div class="achievement-card">
-                                <p>打通仓储入库账户与财务月结对账单，建立双侧协同通知机制</p>
-                                <strong>对账效率提升60%</strong>
+                                <p data-i18n="experience.lalamove.ach3.desc">打通仓储入库账户与财务月结对账单，建立双侧协同通知机制</p>
+                                <strong data-i18n="experience.lalamove.ach3.result">对账效率提升60%</strong>
                             </div>
                         </div>
                     </div>
@@ -1129,30 +1176,30 @@
                 <div class="experience-item reveal">
                     <div class="experience-header">
                         <div>
-                            <h3 class="experience-company">深圳今日头条科技有限公司 (TikTok Live FE)</h3>
-                            <p class="experience-position">前端开发工程师</p>
+                            <h3 class="experience-company" data-i18n="company.tiktok">深圳今日头条科技有限公司 (TikTok Live FE)</h3>
+                            <p class="experience-position" data-i18n="experience.tiktok.position">前端开发工程师</p>
                         </div>
                         <span class="experience-period">2021.03 - 2023.03</span>
                     </div>
                     <div class="experience-content">
-                        <h4>工作内容</h4>
+                        <h4 data-i18n="experience.responsibilities">工作内容</h4>
                         <ul>
-                            <li>负责TikTok Live直播业务中台、活动平台、保障平台等核心系统的前端开发</li>
-                            <li>专注于通过组件化、工具化与BFF架构升级，提升运营效率与开发体验</li>
-                            <li>主导平台前端BFF架构改造和微前端迁移，实现权限体系统一与工作流融合</li>
+                            <li data-i18n="experience.tiktok.desc1">负责TikTok Live直播业务中台、活动平台、保障平台等核心系统的前端开发</li>
+                            <li data-i18n="experience.tiktok.desc2">专注于通过组件化、工具化与BFF架构升级，提升运营效率与开发体验</li>
+                            <li data-i18n="experience.tiktok.desc3">主导平台前端BFF架构改造和微前端迁移，实现权限体系统一与工作流融合</li>
                         </ul>
                         <div class="achievements">
                             <div class="achievement-card">
-                                <p>优化直播活动组件化搭建平台，将配置项代码量减少25%</p>
-                                <strong>需求开发周期从3-5人日缩短至1-2人日，效率提升70%</strong>
+                                <p data-i18n="experience.tiktok.ach1.desc">优化直播活动组件化搭建平台，将配置项代码量减少25%</p>
+                                <strong data-i18n="experience.tiktok.ach1.result">需求开发周期从3-5人日缩短至1-2人日，效率提升70%</strong>
                             </div>
                             <div class="achievement-card">
-                                <p>负责4个新组件开发与5个旧组件迭代</p>
-                                <strong>所有组件在80%的组件化直播活动中使用</strong>
+                                <p data-i18n="experience.tiktok.ach2.desc">负责4个新组件开发与5个旧组件迭代</p>
+                                <strong data-i18n="experience.tiktok.ach2.result">所有组件在80%的组件化直播活动中使用</strong>
                             </div>
                             <div class="achievement-card">
-                                <p>主导重要直播保障平台BFF架构改造，建立自动化发布流程</p>
-                                <strong>提升部署效率与规范性</strong>
+                                <p data-i18n="experience.tiktok.ach3.desc">主导重要直播保障平台BFF架构改造，建立自动化发布流程</p>
+                                <strong data-i18n="experience.tiktok.ach3.result">提升部署效率与规范性</strong>
                             </div>
                         </div>
                     </div>
@@ -1165,16 +1212,16 @@
     <section id="projects">
         <div class="container">
             <div class="section-header reveal">
-                <p class="section-label">Featured Work</p>
-                <h2 class="section-title">项目经历</h2>
+                <p class="section-label" data-i18n="projects.label">Featured Work</p>
+                <h2 class="section-title" data-i18n="projects.title">项目经历</h2>
             </div>
             <div class="projects-grid">
                 <div class="project-card reveal">
                     <div class="project-header">
                         <div class="project-icon">💰</div>
                     </div>
-                    <h3 class="project-title">货拉拉-财务管理系统</h3>
-                    <p class="project-desc">负责费用报销、应付管理、保证金管理等多个模块的重构与迭代，主导PC与移动端组件库建设，实现财务流程自动化与高效化。</p>
+                    <h3 class="project-title" data-i18n="projects.finance.title">货拉拉-财务管理系统</h3>
+                    <p class="project-desc" data-i18n="projects.finance.desc">负责费用报销、应付管理、保证金管理等多个模块的重构与迭代，主导PC与移动端组件库建设，实现财务流程自动化与高效化。</p>
                     <div class="project-tech">
                         <span class="tech-tag">React</span>
                         <span class="tech-tag">TypeScript</span>
@@ -1184,15 +1231,15 @@
                     <div class="project-metrics">
                         <div class="metric">
                             <div class="metric-value">50%</div>
-                            <div class="metric-label">效率提升</div>
+                            <div class="metric-label" data-i18n="metrics.efficiency">效率提升</div>
                         </div>
                         <div class="metric">
                             <div class="metric-value">70%</div>
-                            <div class="metric-label">Bug减少</div>
+                            <div class="metric-label" data-i18n="metrics.bugReduction">Bug减少</div>
                         </div>
                         <div class="metric">
                             <div class="metric-value">30+</div>
-                            <div class="metric-label">组件开发</div>
+                            <div class="metric-label" data-i18n="metrics.components">组件开发</div>
                         </div>
                     </div>
                 </div>
@@ -1200,8 +1247,8 @@
                     <div class="project-header">
                         <div class="project-icon">📦</div>
                     </div>
-                    <h3 class="project-title">货拉拉-仓储管理系统</h3>
-                    <p class="project-desc">打通仓储入库台账与财务月结对账单，解决业财协同难题，实现自动关联与复杂业务自动对账。</p>
+                    <h3 class="project-title" data-i18n="projects.warehouse.title">货拉拉-仓储管理系统</h3>
+                    <p class="project-desc" data-i18n="projects.warehouse.desc">打通仓储入库台账与财务月结对账单，解决业财协同难题，实现自动关联与复杂业务自动对账。</p>
                     <div class="project-tech">
                         <span class="tech-tag">React</span>
                         <span class="tech-tag">ECharts</span>
@@ -1210,11 +1257,11 @@
                     <div class="project-metrics">
                         <div class="metric">
                             <div class="metric-value">60%</div>
-                            <div class="metric-label">效率提升</div>
+                            <div class="metric-label" data-i18n="metrics.efficiency">效率提升</div>
                         </div>
                         <div class="metric">
                             <div class="metric-value">2000+</div>
-                            <div class="metric-label">月处理数据</div>
+                            <div class="metric-label" data-i18n="metrics.monthlyData">月处理数据</div>
                         </div>
                     </div>
                 </div>
@@ -1222,21 +1269,21 @@
                     <div class="project-header">
                         <div class="project-icon">📈</div>
                     </div>
-                    <h3 class="project-title">货拉拉-供应链管理系统</h3>
-                    <p class="project-desc">开发采购订单交付时效监控与KPI管理系统，解决订单交付状态不透明、时效统计滞后、无法及时预警的痛点。</p>
+                    <h3 class="project-title" data-i18n="projects.supply.title">货拉拉-供应链管理系统</h3>
+                    <p class="project-desc" data-i18n="projects.supply.desc">开发采购订单交付时效监控与KPI管理系统，解决订单交付状态不透明、时效统计滞后、无法及时预警的痛点。</p>
                     <div class="project-tech">
                         <span class="tech-tag">React</span>
-                        <span class="tech-tag">数据监控</span>
-                        <span class="tech-tag">自动化</span>
+                        <span class="tech-tag" data-i18n="tech.monitoring">数据监控</span>
+                        <span class="tech-tag" data-i18n="tech.automation">自动化</span>
                     </div>
                     <div class="project-metrics">
                         <div class="metric">
-                            <div class="metric-value">自动</div>
-                            <div class="metric-label">状态切换</div>
+                            <div class="metric-value" data-i18n="metrics.auto">自动</div>
+                            <div class="metric-label" data-i18n="metrics.statusSwitch">状态切换</div>
                         </div>
                         <div class="metric">
                             <div class="metric-value">KPI</div>
-                            <div class="metric-label">实时比对</div>
+                            <div class="metric-label" data-i18n="metrics.realtimeCompare">实时比对</div>
                         </div>
                     </div>
                 </div>
@@ -1244,8 +1291,8 @@
                     <div class="project-header">
                         <div class="project-icon">📊</div>
                     </div>
-                    <h3 class="project-title">TikTok-直播活动组件化搭建平台 (Fusion)</h3>
-                    <p class="project-desc">公司核心的直播活动配置化中台，通过组件化方案将运营活动的前端开发产能提升数倍。</p>
+                    <h3 class="project-title" data-i18n="projects.fusion.title">TikTok-直播活动组件化搭建平台 (Fusion)</h3>
+                    <p class="project-desc" data-i18n="projects.fusion.desc">公司核心的直播活动配置化中台，通过组件化方案将运营活动的前端开发产能提升数倍。</p>
                     <div class="project-tech">
                         <span class="tech-tag">React</span>
                         <span class="tech-tag">Formily</span>
@@ -1254,15 +1301,15 @@
                     <div class="project-metrics">
                         <div class="metric">
                             <div class="metric-value">70%</div>
-                            <div class="metric-label">效率提升</div>
+                            <div class="metric-label" data-i18n="metrics.efficiency">效率提升</div>
                         </div>
                         <div class="metric">
                             <div class="metric-value">25%</div>
-                            <div class="metric-label">代码减少</div>
+                            <div class="metric-label" data-i18n="metrics.codeReduction">代码减少</div>
                         </div>
                         <div class="metric">
                             <div class="metric-value">80%</div>
-                            <div class="metric-label">使用率</div>
+                            <div class="metric-label" data-i18n="metrics.usage">使用率</div>
                         </div>
                     </div>
                 </div>
@@ -1270,21 +1317,21 @@
                     <div class="project-header">
                         <div class="project-icon">🛡️</div>
                     </div>
-                    <h3 class="project-title">TikTok-重要直播保障平台</h3>
-                    <p class="project-desc">重要直播活动的实时监控与保障平台，提供数据可视化、直播过程控制、风险提示和活动复盘功能。</p>
+                    <h3 class="project-title" data-i18n="projects.guard.title">TikTok-重要直播保障平台</h3>
+                    <p class="project-desc" data-i18n="projects.guard.desc">重要直播活动的实时监控与保障平台，提供数据可视化、直播过程控制、风险提示和活动复盘功能。</p>
                     <div class="project-tech">
                         <span class="tech-tag">React</span>
                         <span class="tech-tag">ECharts</span>
-                        <span class="tech-tag">微前端</span>
+                        <span class="tech-tag" data-i18n="tech.microfrontend">微前端</span>
                     </div>
                     <div class="project-metrics">
                         <div class="metric">
                             <div class="metric-value">BFF</div>
-                            <div class="metric-label">架构改造</div>
+                            <div class="metric-label" data-i18n="metrics.architecture">架构改造</div>
                         </div>
                         <div class="metric">
-                            <div class="metric-value">自动化</div>
-                            <div class="metric-label">发布流程</div>
+                            <div class="metric-value" data-i18n="metrics.auto">自动</div>
+                            <div class="metric-label" data-i18n="metrics.deploy">发布流程</div>
                         </div>
                     </div>
                 </div>
@@ -1292,21 +1339,21 @@
                     <div class="project-header">
                         <div class="project-icon">📋</div>
                     </div>
-                    <h3 class="project-title">TikTok-直播活动项目管理平台</h3>
-                    <p class="project-desc">实现运营团队直播活动预算审批流程的线上化与自动化，采用BFF架构与前后端分离设计，涉及复杂的交互式表单与多状态工作流。</p>
+                    <h3 class="project-title" data-i18n="projects.management.title">TikTok-直播活动项目管理平台</h3>
+                    <p class="project-desc" data-i18n="projects.management.desc">实现运营团队直播活动预算审批流程的线上化与自动化，采用BFF架构与前后端分离设计，涉及复杂的交互式表单与多状态工作流。</p>
                     <div class="project-tech">
                         <span class="tech-tag">React</span>
                         <span class="tech-tag">BFF</span>
-                        <span class="tech-tag">工作流</span>
+                        <span class="tech-tag" data-i18n="tech.workflow">工作流</span>
                     </div>
                     <div class="project-metrics">
                         <div class="metric">
                             <div class="metric-value">MVP</div>
-                            <div class="metric-label">从零开发</div>
+                            <div class="metric-label" data-i18n="metrics.fromZero">从零开发</div>
                         </div>
                         <div class="metric">
                             <div class="metric-value">100%</div>
-                            <div class="metric-label">线上化</div>
+                            <div class="metric-label" data-i18n="metrics.digitalization">线上化</div>
                         </div>
                     </div>
                 </div>
@@ -1314,21 +1361,21 @@
                     <div class="project-header">
                         <div class="project-icon">📑</div>
                     </div>
-                    <h3 class="project-title">TikTok-案例活动平台</h3>
-                    <p class="project-desc">支持运营团队一键复用成功活动模式的平台，具备案例展示、一键创建、配置编辑等核心功能，强调用户友好性。</p>
+                    <h3 class="project-title" data-i18n="projects.cases.title">TikTok-案例活动平台</h3>
+                    <p class="project-desc" data-i18n="projects.cases.desc">支持运营团队一键复用成功活动模式的平台，具备案例展示、一键创建、配置编辑等核心功能，强调用户友好性。</p>
                     <div class="project-tech">
                         <span class="tech-tag">React</span>
-                        <span class="tech-tag">配置化</span>
-                        <span class="tech-tag">交互设计</span>
+                        <span class="tech-tag" data-i18n="tech.configurable">配置化</span>
+                        <span class="tech-tag" data-i18n="tech.interaction">交互设计</span>
                     </div>
                     <div class="project-metrics">
                         <div class="metric">
                             <div class="metric-value">15</div>
-                            <div class="metric-label">首月活动</div>
+                            <div class="metric-label" data-i18n="metrics.firstMonth">首月活动</div>
                         </div>
                         <div class="metric">
-                            <div class="metric-value">零开发</div>
-                            <div class="metric-label">内容迭代</div>
+                            <div class="metric-value" data-i18n="metrics.noDev">零开发</div>
+                            <div class="metric-label" data-i18n="metrics.contentIterate">内容迭代</div>
                         </div>
                     </div>
                 </div>
@@ -1340,8 +1387,8 @@
     <section id="skills">
         <div class="container">
             <div class="section-header reveal">
-                <p class="section-label">Technical Arsenal</p>
-                <h2 class="section-title">专业技能</h2>
+                <p class="section-label" data-i18n="skills.label">Technical Arsenal</p>
+                <h2 class="section-title" data-i18n="skills.title">专业技能</h2>
             </div>
             <div class="skills-wrapper">
                 <div class="skill-category reveal">
@@ -1349,7 +1396,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
                         </svg>
-                        编程语言
+                        <span data-i18n="skills.languages">编程语言</span>
                     </h3>
                     <div class="skill-list">
                         <div class="skill-item">
@@ -1389,7 +1436,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/>
                         </svg>
-                        框架/库
+                        <span data-i18n="skills.frameworks">框架/库</span>
                     </h3>
                     <div class="skill-list">
                         <div class="skill-item">
@@ -1429,7 +1476,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                         </svg>
-                        UI库/工具
+                        <span data-i18n="skills.ui">UI库/工具</span>
                     </h3>
                     <div class="skill-list">
                         <div class="skill-item">
@@ -1469,7 +1516,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
                         </svg>
-                        后端/架构
+                        <span data-i18n="skills.backend">后端/架构</span>
                     </h3>
                     <div class="skill-list">
                         <div class="skill-item">
@@ -1483,7 +1530,7 @@
                             </div>
                         </div>
                         <div class="skill-item">
-                            <span class="skill-name">BFF架构</span>
+                            <span class="skill-name" data-i18n="skills.bff">BFF架构</span>
                             <div class="skill-level">
                                 <span class="skill-dot active"></span>
                                 <span class="skill-dot active"></span>
@@ -1493,7 +1540,7 @@
                             </div>
                         </div>
                         <div class="skill-item">
-                            <span class="skill-name">微前端</span>
+                            <span class="skill-name" data-i18n="skills.microfrontend">微前端</span>
                             <div class="skill-level">
                                 <span class="skill-dot active"></span>
                                 <span class="skill-dot active"></span>
@@ -1512,19 +1559,19 @@
     <section id="education">
         <div class="container">
             <div class="section-header reveal">
-                <p class="section-label">Academic Background</p>
-                <h2 class="section-title">教育经历</h2>
+                <p class="section-label" data-i18n="education.label">Academic Background</p>
+                <h2 class="section-title" data-i18n="education.title">教育经历</h2>
             </div>
             <div class="education-grid">
                 <div class="education-card reveal">
-                    <h3 class="education-degree">硕士</h3>
-                    <p class="education-school">诺丁汉大学</p>
-                    <p class="education-meta">计算机科学与技术 | 2018-2020</p>
+                    <h3 class="education-degree" data-i18n="education.master">硕士</h3>
+                    <p class="education-school" data-i18n="education.nottingham">诺丁汉大学</p>
+                    <p class="education-meta"><span data-i18n="education.cs">计算机科学与技术</span> | 2018-2020</p>
                 </div>
                 <div class="education-card reveal">
-                    <h3 class="education-degree">本科</h3>
-                    <p class="education-school">深圳大学</p>
-                    <p class="education-meta">软件工程 | 2014-2018</p>
+                    <h3 class="education-degree" data-i18n="education.bachelor">本科</h3>
+                    <p class="education-school" data-i18n="education.shenzhen">深圳大学</p>
+                    <p class="education-meta"><span data-i18n="education.se">软件工程</span> | 2014-2018</p>
                 </div>
             </div>
         </div>
@@ -1534,9 +1581,9 @@
     <section id="contact" class="contact-section">
         <div class="container">
             <div class="section-header reveal">
-                <p class="section-label">Get In Touch</p>
-                <h2 class="contact-title">联系我</h2>
-                <p class="contact-subtitle">期待与您合作，共同创造价值</p>
+                <p class="section-label" data-i18n="contact.label">Get In Touch</p>
+                <h2 class="contact-title" data-i18n="contact.title">联系我</h2>
+                <p class="contact-subtitle" data-i18n="contact.subtitle">期待与您合作，共同创造价值</p>
             </div>
             <div class="contact-links">
                 <button class="contact-link copy-btn" data-copy="fanfan-feng@foxmail.com">
@@ -1544,14 +1591,14 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                     </svg>
                     <span class="copy-text">fanfan-feng@foxmail.com</span>
-                    <span class="copy-hint">点击复制</span>
+                    <span class="copy-hint" data-i18n="copy.clickToCopy">点击复制</span>
                 </button>
                 <button class="contact-link copy-btn" data-copy="15889499254">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
                     </svg>
                     <span class="copy-text">158-8949-9254</span>
-                    <span class="copy-hint">点击复制</span>
+                    <span class="copy-hint" data-i18n="copy.clickToCopy">点击复制</span>
                 </button>
                 <a href="https://github.com/fengfanfan-max" target="_blank" rel="noopener noreferrer" class="contact-link">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -1563,17 +1610,17 @@
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                     </svg>
-                    下载简历
+                    <span data-i18n="hero.download">下载简历</span>
                 </a>
             </div>
-            <div class="toast" id="toast">已复制到剪贴板</div>
+            <div class="toast" id="toast" data-i18n="toast.copied">已复制到剪贴板</div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>Designed & Built by 冯凡帆 © 2025</p>
+            <p data-i18n="footer.builtBy">Designed & Built by 冯凡帆 © 2025</p>
         </div>
     </footer>
 
@@ -1675,6 +1722,244 @@
             });
         });
 
+        // Language Switcher
+        const translations = {
+            zh: {
+                'nav.experience': '经历',
+                'nav.projects': '项目',
+                'nav.skills': '技能',
+                'nav.education': '教育',
+                'nav.contact': '联系',
+                'hero.greeting': '你好，我是',
+                'hero.title': '前端开发工程师',
+                'hero.download': '下载简历',
+                'hero.contact': '联系我',
+                'hero.learnMore': '了解更多',
+                'experience.label': 'My Journey',
+                'experience.title': '工作经历',
+                'experience.responsibilities': '工作内容',
+                'experience.lalamove.position': '高级前端研发工程师',
+                'experience.lalamove.desc1': '负责货拉拉财务管理系统、仓储管理系统、供应链管理系统等核心业务系统的前端架构设计与迭代开发',
+                'experience.lalamove.desc2': '主导PC与移动端组件库的技术演进，构建CFC-Mobile移动端组件库，开发30+表单控件与5+业务Hook',
+                'experience.lalamove.desc3': '负责关键技术方案评审、日常代码审查与线上问题应急修复，保障系统稳定性',
+                'experience.lalamove.ach1.desc': '通过财务系统重构，新增银行承兑汇票等付款方式，实现批量审批流程与账目自动核销',
+                'experience.lalamove.ach1.result': '业务差错率降至近零，对账效率提升50%',
+                'experience.lalamove.ach2.desc': '搭建保证金管理模块，实现全流程自动化管理',
+                'experience.lalamove.ach2.result': '稳定管理保证金台账1000+、供应商700+',
+                'experience.lalamove.ach3.desc': '打通仓储入库账户与财务月结对账单，建立双侧协同通知机制',
+                'experience.lalamove.ach3.result': '对账效率提升60%',
+                'experience.tiktok.position': '前端开发工程师',
+                'experience.tiktok.desc1': '负责TikTok Live直播业务中台、活动平台、保障平台等核心系统的前端开发',
+                'experience.tiktok.desc2': '专注于通过组件化、工具化与BFF架构升级，提升运营效率与开发体验',
+                'experience.tiktok.desc3': '主导平台前端BFF架构改造和微前端迁移，实现权限体系统一与工作流融合',
+                'experience.tiktok.ach1.desc': '优化直播活动组件化搭建平台，将配置项代码量减少25%',
+                'experience.tiktok.ach1.result': '需求开发周期从3-5人日缩短至1-2人日，效率提升70%',
+                'experience.tiktok.ach2.desc': '负责4个新组件开发与5个旧组件迭代',
+                'experience.tiktok.ach2.result': '所有组件在80%的组件化直播活动中使用',
+                'experience.tiktok.ach3.desc': '主导重要直播保障平台BFF架构改造，建立自动化发布流程',
+                'experience.tiktok.ach3.result': '提升部署效率与规范性',
+                'projects.label': 'Featured Work',
+                'projects.title': '项目经历',
+                'projects.finance.title': '货拉拉-财务管理系统',
+                'projects.finance.desc': '负责费用报销、应付管理、保证金管理等多个模块的重构与迭代，主导PC与移动端组件库建设，实现财务流程自动化与高效化',
+                'projects.warehouse.title': '货拉拉-仓储管理系统',
+                'projects.warehouse.desc': '打通仓储入库台账与财务月结对账单，解决业财协同难题，实现自动关联与复杂业务自动对账',
+                'projects.supply.title': '货拉拉-供应链管理系统',
+                'projects.supply.desc': '开发采购订单交付时效监控与KPI管理系统，解决订单交付状态不透明、时效统计滞后、无法及时预警的痛点',
+                'projects.fusion.desc': '公司核心的直播活动配置化中台，通过组件化方案将运营活动的前端开发产能提升数倍',
+                'projects.guard.desc': '重要直播活动的实时监控与保障平台，提供数据可视化、直播过程控制、风险提示和活动复盘功能',
+                'projects.management.desc': '实现运营团队直播活动预算审批流程的线上化与自动化，采用BFF架构与前后端分离设计，涉及复杂的交互式表单与多状态工作流',
+                'projects.cases.desc': '支持运营团队一键复用成功活动模式的平台，具备案例展示、一键创建、配置编辑等核心功能，强调用户友好性',
+                'skills.label': 'Technical Arsenal',
+                'skills.title': '专业技能',
+                'education.label': 'Academic Background',
+                'education.title': '教育经历',
+                'contact.label': 'Get In Touch',
+                'contact.title': '联系我',
+                'contact.subtitle': '期待与您合作，共同创造价值',
+                'toast.copied': '已复制到剪贴板',
+                'metrics.efficiency': '效率提升',
+                'metrics.bugReduction': 'Bug减少',
+                'metrics.components': '组件开发',
+                'metrics.monthlyData': '月处理数据',
+                'metrics.codeReduction': '代码减少',
+                'metrics.usage': '使用率',
+                'metrics.architecture': '架构改造',
+                'metrics.deploy': '发布流程',
+                'metrics.fromZero': '从零开发',
+                'metrics.digitalization': '线上化',
+                'metrics.firstMonth': '首月活动',
+                'metrics.contentIterate': '内容迭代',
+                'metrics.auto': '自动',
+                'metrics.statusSwitch': '状态切换',
+                'metrics.realtimeCompare': '实时比对',
+                'metrics.noDev': '零开发',
+                'tech.monitoring': '数据监控',
+                'tech.automation': '自动化',
+                'tech.microfrontend': '微前端',
+                'tech.workflow': '工作流',
+                'tech.configurable': '配置化',
+                'tech.interaction': '交互设计',
+                'skills.languages': '编程语言',
+                'skills.frameworks': '框架/库',
+                'skills.ui': 'UI库/工具',
+                'skills.backend': '后端/架构',
+                'skills.bff': 'BFF架构',
+                'skills.microfrontend': '微前端',
+                'page.title': '冯凡帆 | 前端开发工程师',
+                'copy.clickToCopy': '点击复制',
+                'copy.copied': '已复制',
+                'name': '冯凡帆',
+                'hero.location': '深圳',
+                'hero.experience': '3年工作经验',
+                'hero.salary': '期望薪资 23-26K',
+                'education.master': '硕士',
+                'education.bachelor': '本科',
+                'education.nottingham': '诺丁汉大学',
+                'education.shenzhen': '深圳大学',
+                'education.cs': '计算机科学与技术',
+                'education.se': '软件工程',
+                'footer.builtBy': 'Designed & Built by 冯凡帆 © 2025',
+                'lang.zh': '中文',
+                'lang.en': 'EN',
+                'company.lalamove': '深圳依时货拉拉科技有限公司',
+                'company.tiktok': '深圳今日头条科技有限公司 (TikTok Live FE)',
+                'projects.fusion.title': 'TikTok-直播活动组件化搭建平台 (Fusion)',
+                'projects.guard.title': 'TikTok-重要直播保障平台',
+                'projects.management.title': 'TikTok-直播活动项目管理平台',
+                'projects.cases.title': 'TikTok-案例活动平台'
+            },
+            en: {
+                'nav.experience': 'Experience',
+                'nav.projects': 'Projects',
+                'nav.skills': 'Skills',
+                'nav.education': 'Education',
+                'nav.contact': 'Contact',
+                'hero.greeting': 'Hello, I\'m',
+                'hero.title': 'Frontend Developer',
+                'hero.download': 'Resume',
+                'hero.contact': 'Contact Me',
+                'hero.learnMore': 'Learn More',
+                'experience.label': 'My Journey',
+                'experience.title': 'Experience',
+                'experience.responsibilities': 'Responsibilities',
+                'experience.lalamove.position': 'Senior Frontend Engineer',
+                'experience.lalamove.desc1': 'Led frontend architecture design and iterative development of core business systems including Finance, Warehouse, and Supply Chain Management at Lalamove',
+                'experience.lalamove.desc2': 'Led technical evolution of PC and mobile component libraries, built CFC-Mobile component library with 30+ form controls and 5+ business Hooks',
+                'experience.lalamove.desc3': 'Responsible for technical design reviews, code reviews, and emergency fixes to ensure system stability',
+                'experience.lalamove.ach1.desc': 'Restructured the financial system, added bank acceptance bill payment methods, implemented batch approval and automatic reconciliation',
+                'experience.lalamove.ach1.result': 'Reduced business error rate to near zero, improved reconciliation efficiency by 50%',
+                'experience.lalamove.ach2.desc': 'Built guarantee deposit management module for full-process automation',
+                'experience.lalamove.ach2.result': 'Stably managed 1000+ guarantee deposit accounts and 700+ suppliers',
+                'experience.lalamove.ach3.desc': 'Connected warehouse inbound accounts with financial monthly statements, established dual-side notification mechanism',
+                'experience.lalamove.ach3.result': 'Improved reconciliation efficiency by 60%',
+                'experience.tiktok.position': 'Frontend Developer',
+                'experience.tiktok.desc1': 'Responsible for frontend development of TikTok Live business platform, Event Platform, and Guard Platform',
+                'experience.tiktok.desc2': 'Focused on componentization, tooling, and BFF architecture upgrades to improve operational efficiency and developer experience',
+                'experience.tiktok.desc3': 'Led BFF architecture transformation and micro-frontend migration, achieving unified permission system and workflow integration',
+                'experience.tiktok.ach1.desc': 'Optimized live event component building platform, reduced configuration code by 25%',
+                'experience.tiktok.ach1.result': 'Shortened development cycle from 3-5 days to 1-2 days, 70% efficiency improvement',
+                'experience.tiktok.ach2.desc': 'Developed 4 new components and iterated 5 existing components',
+                'experience.tiktok.ach2.result': 'All components used in 80% of component-based live events',
+                'experience.tiktok.ach3.desc': 'Led BFF architecture transformation for the Guard Platform, established automated deployment process',
+                'experience.tiktok.ach3.result': 'Improved deployment efficiency and standardization',
+                'projects.label': 'Featured Work',
+                'projects.title': 'Projects',
+                'projects.finance.title': 'Lalamove Financial Management System',
+                'projects.finance.desc': 'Responsible for refactoring and iteration of expense reimbursement, accounts payable, and guarantee deposit modules, leading PC and mobile component library development',
+                'projects.warehouse.title': 'Lalamove Warehouse Management System',
+                'projects.warehouse.desc': 'Connected warehouse inbound ledgers with financial monthly statements, solving business-finance collaboration challenges',
+                'projects.supply.title': 'Lalamove Supply Chain Management System',
+                'projects.supply.desc': 'Developed procurement order delivery monitoring and KPI management system for transparent order tracking',
+                'projects.fusion.desc': 'Core live event configuration platform, increasing operational event development productivity through componentization',
+                'projects.guard.desc': 'Real-time monitoring and protection platform for important live events with data visualization and risk alerts',
+                'projects.management.desc': 'Online budget approval workflow platform for live event management with complex forms and multi-state workflows',
+                'projects.cases.desc': 'Platform for one-click reuse of successful event patterns with case display and configuration editing',
+                'skills.label': 'Technical Arsenal',
+                'skills.title': 'Skills',
+                'education.label': 'Academic Background',
+                'education.title': 'Education',
+                'contact.label': 'Get In Touch',
+                'contact.title': 'Contact',
+                'contact.subtitle': 'Looking forward to collaborating with you',
+                'toast.copied': 'Copied to clipboard',
+                'metrics.efficiency': 'Efficiency',
+                'metrics.bugReduction': 'Bug Reduction',
+                'metrics.components': 'Components',
+                'metrics.monthlyData': 'Monthly Data',
+                'metrics.codeReduction': 'Code Reduction',
+                'metrics.usage': 'Usage',
+                'metrics.architecture': 'Architecture',
+                'metrics.deploy': 'Deployment',
+                'metrics.fromZero': 'From Zero',
+                'metrics.digitalization': 'Digitalized',
+                'metrics.firstMonth': 'First Month',
+                'metrics.contentIterate': 'Content Update',
+                'metrics.auto': 'Auto',
+                'metrics.statusSwitch': 'Status Switch',
+                'metrics.realtimeCompare': 'Real-time Compare',
+                'metrics.noDev': 'No Dev',
+                'tech.monitoring': 'Monitoring',
+                'tech.automation': 'Automation',
+                'tech.microfrontend': 'Micro-frontend',
+                'tech.workflow': 'Workflow',
+                'tech.configurable': 'Configurable',
+                'tech.interaction': 'Interaction',
+                'skills.languages': 'Programming Languages',
+                'skills.frameworks': 'Frameworks',
+                'skills.ui': 'UI Libraries',
+                'skills.backend': 'Backend/Architecture',
+                'skills.bff': 'BFF Architecture',
+                'skills.microfrontend': 'Micro-frontend',
+                'page.title': 'Feng Fanfan | Frontend Developer',
+                'copy.clickToCopy': 'Click to copy',
+                'copy.copied': 'Copied',
+                'name': 'Feng, Fanfan',
+                'hero.location': 'Shenzhen',
+                'hero.experience': '3 years experience',
+                'hero.salary': 'Expected 23-26K',
+                'education.master': 'Master\'s Degree',
+                'education.bachelor': 'Bachelor\'s Degree',
+                'education.nottingham': 'University of Nottingham',
+                'education.shenzhen': 'Shenzhen University',
+                'education.cs': 'Computer Science',
+                'education.se': 'Software Engineering',
+                'footer.builtBy': 'Designed & Built by Feng Fanfan © 2025',
+                'lang.zh': '中文',
+                'lang.en': 'EN',
+                'company.lalamove': 'Lalamove Technology (Shenzhen)',
+                'company.tiktok': 'ByteDance (TikTok Live FE)',
+                'projects.fusion.title': 'TikTok Live Event Component Platform (Fusion)',
+                'projects.guard.title': 'TikTok Live Guard Platform',
+                'projects.management.title': 'TikTok Live Event Management Platform',
+                'projects.cases.title': 'TikTok Live Event Case Platform'
+            }
+        };
+
+        let currentLang = localStorage.getItem('lang') || (navigator.language.startsWith('zh') ? 'zh' : 'en');
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('lang', lang);
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+            document.querySelectorAll('.lang-switch button').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+            });
+        }
+
+        // Initialize language
+        setLanguage(currentLang);
+
+        // Language switcher click handlers
+        document.querySelectorAll('.lang-switch button').forEach(btn => {
+            btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang')));
+        });
+
         // Avatar load handling
         const avatarImg = document.querySelector('.hero-avatar img');
         const avatarLoader = document.querySelector('.hero-avatar-loader');
@@ -1712,12 +1997,13 @@
                 try {
                     await navigator.clipboard.writeText(textToCopy);
                     btn.classList.add('copied');
-                    copyHint.textContent = '已复制';
+                    copyHint.textContent = translations[currentLang]['copy.copied'];
+                    toast.textContent = translations[currentLang]['toast.copied'];
                     toast.classList.add('show');
 
                     setTimeout(() => {
                         btn.classList.remove('copied');
-                        copyHint.textContent = '点击复制';
+                        copyHint.textContent = translations[currentLang]['copy.clickToCopy'];
                         toast.classList.remove('show');
                     }, 2000);
                 } catch (err) {
